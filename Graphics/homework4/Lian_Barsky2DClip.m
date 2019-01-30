@@ -9,7 +9,7 @@ diffY = y2 - y1;
 tin = 0;
 tout = 1;
 
-[check, tin, tout] = calcT(diffX, Xmax - x1, tin, tout);
+[check, tin, tout] = calcT(diffX, Xmax - x1, tin, tout); % check == isInside
 
 if (check)
   

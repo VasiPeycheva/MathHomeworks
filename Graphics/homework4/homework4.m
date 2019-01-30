@@ -44,11 +44,11 @@ catch
 end
     
     
-X1 = round(X(1));
-Y1 = round(Y(1));
+X1 = floor(X(1));
+Y1 = floor(Y(1));
 
-X2 = round(X(2));
-Y2 = round(Y(2));
+X2 = floor(X(2));
+Y2 = floor(Y(2));
 
 M = zeros(X_MAX,Y_MAX);
 
@@ -79,19 +79,27 @@ Lian_Barsky2DClip;
 color = 2;
 colLine = [0,0,1];
 
-X1 = round(X1);
-X2 = round(X2);
-Y1 = round(Y1);
-Y2 = round(Y2);
+X1 = floor(X1);
+X2 = floor(X2);
+Y1 = floor(Y1);
+Y2 = floor(Y2);
+
+if (abs(X2-X1)>=width)
+    X1=X1+1;
+end
+
+if (abs(Y2-Y1) >= height)
+    Y2=Y2+1;
+end
 
 Bersenham_Line;
 
-pause(2);
+pause(0.2);
 
 for i = 1 : X_MAX
    for j = 1 : Y_MAX
       if M(i,j) == color
-         rectangle('Position',[i-1,j-1,1,1],'FaceColor',colLine);
+          rectangle('Position',[i-1,j-1,1,1],'FaceColor',colLine);
      end
   end
 end  
